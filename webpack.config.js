@@ -29,6 +29,14 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
+        test: /\.(svg|eot|woff|woff2|ttf)$/,
+        type: 'asset/resource',
+        generator: {
+          // publicPath: '../fonts/',
+          filename: 'compiled/fonts/[hash][ext][query]',
+        },
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {

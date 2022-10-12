@@ -7,9 +7,8 @@ const clear = document.querySelector('.clear-btn');
 const list = document.querySelector('.todo-list');
 const input = document.getElementById('add-input');
 const form = document.getElementById('todoform');
-
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
-const LINE_THROUGH = 'lineThrough';
+const red = 'linethrough';
 
 // first render
 renderTodos();
@@ -37,21 +36,11 @@ function renderTodos() {
   todos.forEach((todo, index) => {
     list.innerHTML += `
     <div class="todo" id=${index}>
-   <i class="fa ${
-     todo.checked ? 'solid fa-check' : 'regular fa-square'
-   }"  data-action="check"
-    ></i>
-   <p class= "text "${todo.checked ? LINE_THROUGH : ''}  data-action="check">${
-      todo.value
-    }</p>
-    <input type="text" class="edit-input hidden" value=${todo.value} />
-    <i class='fas fa-ellipsis-v edit-task'  data-action="edit">
-    </i>
- <i class="fa-solid fa-trash-can trash-btnn hidden " data-action="delete">
-    </i>
-    </div>
-
-    `;
+   <i class= "fa  ${todo.checked ? 'solid fa-check' : 'regular fa-square'}" data-action="check"></i>
+   <p class= "text "${todo.checked ? red : ''}  data-action="check">${todo.value}</p>
+    <input type="text" class="edit-input hidden" value=${todo.value}/>
+    <i class='fas fa-ellipsis-v edit-task'  data-action="edit"></i>
+ <i class="fa-solid fa-trash-can trash-btnn hidden " data-action="delete"></i></div>`;
   });
 }
 
@@ -72,7 +61,6 @@ list.addEventListener('click', (event) => {
   // action === 'edit' && checkTodo(todoId);
   action === 'delete' && checkTodo(todoId);
 });
-
 function checkTodo(todoId) {
   todos = todos.map((todo, index) => ({
     ...todo,
@@ -83,7 +71,7 @@ function checkTodo(todoId) {
 }
 
 document.body.addEventListener('click', (ev) => {
-  const el = event.target;
+  const el = ev.target;
   if (el.classList.contains('edit-task')) {
     ev.preventDefault();
     el.parentNode.querySelector('.trash-btnn').classList.toggle('hidden');
@@ -112,11 +100,20 @@ clear.addEventListener('click', () => {
 });
 
 document.body.addEventListener('keyup', (ev) => {
-  const el = event.target;
+  const el = ev.target;
   if (el.classList.contains('edit-input') && ev.keyCode === 13) {
     ev.preventDefault();
     todos[el.parentNode.id].value = el.value;
     localStorage.setItem('todos', JSON.stringify(todos));
     renderTodos();
+  }
+});
+
+document.body.addEventListener('click', (ev) => {
+  const el = ev.target;
+  if (el.classList.contains('fa-square')) {
+    ev.preventDefault();
+
+    el.parentNode.querySelector('.text').classList.toggle('linethrough');
   }
 });

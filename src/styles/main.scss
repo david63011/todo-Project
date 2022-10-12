@@ -32,11 +32,6 @@ li {
   overflow: hidden;
 }
 
-.list-title {
-  font-size: inherit;
-  margin: 0;
-}
-
 .add-input {
   border: 1px solid black;
   font-style: italic;
@@ -63,15 +58,6 @@ li {
   cursor: pointer;
 }
 
-.text-area {
-  display: none;
-}
-
-.item-container {
-  justify-content: space-between;
-  gap: 5px;
-}
-
 .item-container span,
 .item-container textarea {
   width: 200px;
@@ -83,17 +69,6 @@ li {
   width: 20px;
 }
 
-.edit-item {
-  display: inline;
-  font: inherit;
-  padding: 0;
-  height: 18px;
-  border: none;
-  outline: none;
-  resize: none;
-  cursor: text;
-  overflow: auto;
-}
 .task-lists-title {
   display: flex;
   justify-content: space-between;
@@ -121,14 +96,9 @@ li {
   justify-content: space-between;
 }
 
-.lineThrough {
-  text-decoration: line-through;
-  color: rgb(196, 16, 16);
-}
 
 .edit-task {
   cursor: pointer;
-  color: rgb(204, 16, 47);
 }
 
 .hidden {
@@ -168,4 +138,12 @@ li {
   border: 2px solid black;
   font-style: italic;
   font-weight: 400;
+}
+
+.fa-check {
+  color: green;
+}
+
+.linethrough {
+  text-decoration: line-through;
 }
