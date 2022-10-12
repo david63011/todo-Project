@@ -7,7 +7,6 @@ const clear = document.querySelector('.clear-btn');
 const list = document.querySelector('.todo-list');
 const input = document.getElementById('add-input');
 const form = document.getElementById('todoform');
-const newInput = document.querySelector('.edit-input ');
 
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 const LINE_THROUGH = 'lineThrough';
@@ -97,6 +96,7 @@ document.body.addEventListener('click', (ev) => {
     ev.preventDefault();
     todos.splice(el.parentNode.id, 1);
     localStorage.setItem('todos', JSON.stringify(todos));
+    renderTodos();
   }
 
   if (el.classList.contains('edit-input')) {
