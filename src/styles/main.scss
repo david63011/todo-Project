@@ -1,0 +1,136 @@
+//importing font awesome
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.main-panel {
+  min-width: 40%;
+  max-width: 75%;
+  margin: auto;
+  display: grid;
+  box-shadow: 0 0 10px #888;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-input {
+  border: 1px solid black;
+  font-style: italic;
+}
+
+.add-input,
+.clear-btn {
+  border: none;
+}
+
+.list-title,
+.add-input,
+.item-container,
+.clear-btn {
+  padding: 15px;
+  border-bottom: 1px solid #b5b5b5;
+  display: flex;
+}
+
+.clear-btn {
+  color: gray;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-container span,
+.item-container textarea {
+  width: 200px;
+  flex-grow: 1;
+}
+
+.cancel-btn {
+  height: 20px;
+  width: 20px;
+}
+
+.task-lists-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todos-list {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 5px;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.edit-task {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.trash-btnn {
+  cursor: pointer;
+  color: rgb(204, 16, 47);
+}
+
+.show {
+  display: block;
+}
+
+.new-todo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+.edit-input {
+  border: 2px solid black;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.linethrough {
+  text-decoration: line-through;
+}
+
+.fa-check {
+  color: green;
+}
