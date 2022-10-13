@@ -12,7 +12,7 @@ export const input = document.getElementById('add-input');
 const form = document.getElementById('todoform');
 // eslint-disable-next-line import/no-mutable-exports
 export let todos = JSON.parse(localStorage.getItem('todos')) || [];
-const red = 'linethrough';
+// eslint-disable-next-line no-unused-vars
 
 // first render
 renderTodos();
