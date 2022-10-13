@@ -2,12 +2,16 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
 import './styles/main.scss';
+// eslint-disable-next-line import/no-cycle
+import saveTodo from './status';
 
 const clear = document.querySelector('.clear-btn');
 const list = document.querySelector('.todo-list');
-const input = document.getElementById('add-input');
+// eslint-disable-next-line import/prefer-default-export
+export const input = document.getElementById('add-input');
 const form = document.getElementById('todoform');
-let todos = JSON.parse(localStorage.getItem('todos')) || [];
+// eslint-disable-next-line import/no-mutable-exports
+export let todos = JSON.parse(localStorage.getItem('todos')) || [];
 const red = 'linethrough';
 
 // first render
@@ -19,19 +23,7 @@ form.addEventListener('submit', (e) => {
   localStorage.setItem('todos', JSON.stringify(todos));
 });
 
-function saveTodo() {
-  const todoValue = input.value;
-
-  todos.push({
-    value: todoValue,
-    completed: false,
-    id: Date.now(),
-  });
-  input.value = '';
-  renderTodos();
-}
-
-function renderTodos() {
+export function renderTodos() {
   list.innerHTML = '';
 
   todos.forEach((todo, index) => {
@@ -40,7 +32,7 @@ function renderTodos() {
    <i class= "fa  ${
   todo.checked ? 'solid fa-check' : 'regular fa-square'
 }" data-action="check"></i>
-   <p class= "text "${todo.checked ? red : ''}  data-action="check">${
+   <p class= "text "${todo.checked ? 'linethrough' : ''}  data-action="check">${
   todo.value
 }</p>
     <input type="text" class="edit-input hidden" value=${todo.value}/>
@@ -118,7 +110,6 @@ document.body.addEventListener('click', (ev) => {
   const el = ev.target;
   if (el.classList.contains('fa-square')) {
     ev.preventDefault();
-
-    el.parentNode.querySelector('.text').classList.toggle('linethrough');
+    el.parentNode.querySelector('.text').classList.add('linethrough');
   }
 });
