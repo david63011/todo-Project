@@ -12,6 +12,9 @@ clone the repo
 
 https://github.com/david63011/todo-Project.git
 
+# Live app
+https://david63011.github.io/todo-Project/dist/
+
 # Install
 
 Install the npm packages.
