@@ -32,7 +32,7 @@ export function renderTodos() {
    <i class= "fa  ${
   todo.checked ? 'solid fa-check' : 'regular fa-square'
 }" data-action="check"></i>
-   <p class= "text "${todo.checked ? 'linethrough' : ''}  data-action="check">${
+   <p class= "text "${todo.checked ? 'checked' : ''}  data-action="check">${
   todo.value
 }</p>
     <input type="text" class="edit-input hidden" value=${todo.value}/>
@@ -47,7 +47,6 @@ list.addEventListener('click', (event) => {
   const { target } = event;
   const parentElement = target.parentNode;
   if (parentElement.className !== 'todo') return;
-
   const todo = parentElement;
   const todoId = Number(todo.id);
 
@@ -55,17 +54,30 @@ list.addEventListener('click', (event) => {
   const { action } = target.dataset;
 
   action === 'check' && checkTodo(todoId);
-  // action === 'edit' && checkTodo(todoId);
-  action === 'delete' && checkTodo(todoId);
 });
+
 function checkTodo(todoId) {
-  todos = todos.map((todo, index) => ({
-    ...todo,
-    checked: index === todoId ? !todo.checked : todo.checked,
-  }));
+  const newArr = todos.map((todo, index) => {
+    if (todoId === index) {
+      return {
+        value: todo.value,
+        checked: !todo.checked,
+      };
+    }
+    return {
+      value: todo.value,
+      checked: todo.checked,
+    };
+  });
+  todos = newArr;
+  console.log(todos);
+
+  localStorage.setItem('todos', JSON.stringify(todos));
 
   renderTodos();
 }
+
+// make array value true if true
 
 document.body.addEventListener('click', (ev) => {
   const el = ev.target;
@@ -91,9 +103,8 @@ document.body.addEventListener('click', (ev) => {
 });
 
 clear.addEventListener('click', () => {
-  todos = [];
-  localStorage.clear();
-  renderTodos();
+  clearCompleted();
+  localStorage.setItem('todos', JSON.stringify(todos));
 });
 
 document.body.addEventListener('keyup', (ev) => {
@@ -113,3 +124,8 @@ document.body.addEventListener('click', (ev) => {
     el.parentNode.querySelector('.text').classList.add('linethrough');
   }
 });
+
+function clearCompleted() {
+  todos = todos.filter((todo) => todo.checked === false);
+  renderTodos();
+}

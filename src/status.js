@@ -5,7 +5,8 @@ function saveTodo() {
   const todoValue = input.value;
   todos.push({
     value: todoValue,
-    completed: false,
+    checked: false,
+
     id: Date.now(),
   });
   input.value = '';
