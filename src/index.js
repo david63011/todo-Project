@@ -35,7 +35,7 @@ export function renderTodos() {
    <p class= "text "${todo.checked ? 'checked' : ''}  data-action="check">${
   todo.value
 }</p>
-    <input type="text" class="edit-input hidden" value=${todo.value}/>
+    <input type="text" class="edit-input hidden" value=${todo.value} />
     <i class='fas fa-ellipsis-v edit-task'  data-action="edit"></i>
  <i class="fa-solid fa-trash-can trash-btnn hidden " data-action="delete"></i></div>`;
   });
