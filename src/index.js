@@ -70,7 +70,6 @@ function checkTodo(todoId) {
     };
   });
   todos = newArr;
-  console.log(todos);
 
   localStorage.setItem('todos', JSON.stringify(todos));
 
