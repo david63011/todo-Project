@@ -36,8 +36,8 @@ var list = document.querySelector('.todo-list'); // eslint-disable-next-line imp
 var input = document.getElementById('add-input');
 var form = document.getElementById('todoform'); // eslint-disable-next-line import/no-mutable-exports
 
-var todos = JSON.parse(localStorage.getItem('todos')) || [];
-var red = 'linethrough'; // first render
+var todos = JSON.parse(localStorage.getItem('todos')) || []; // eslint-disable-next-line no-unused-vars
+// first render
 
 renderTodos();
 form.addEventListener('submit', function (e) {
@@ -887,4 +887,4 @@ module.exports = __webpack_require__.p + "compiled/fonts/66104b766c3d0462b3c5.wo
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=bundle ef108a2fa830a789541c.js.map
+//# sourceMappingURL=bundle 1f30e0a0b222614a02f1.js.map
