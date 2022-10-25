@@ -4,9 +4,10 @@
 import './styles/main.scss';
 // eslint-disable-next-line import/no-cycle
 import saveTodo from './status';
+import { renderTodos } from './rendertodos';
 
 const clear = document.querySelector('.clear-btn');
-const list = document.querySelector('.todo-list');
+export const list = document.querySelector('.todo-list');
 // eslint-disable-next-line import/prefer-default-export
 export const input = document.getElementById('add-input');
 const form = document.getElementById('todoform');
@@ -22,24 +23,6 @@ form.addEventListener('submit', (e) => {
   saveTodo();
   localStorage.setItem('todos', JSON.stringify(todos));
 });
-
-export function renderTodos() {
-  list.innerHTML = '';
-
-  todos.forEach((todo, index) => {
-    list.innerHTML += `
-    <div class="todo" id=${index}>
-   <i class= "fa  ${
-  todo.checked ? 'solid fa-check' : 'regular fa-square'
-}" data-action="check"></i>
-   <p class= "text "${todo.checked ? 'checked' : ''}  data-action="check">${
-  todo.value
-}</p>
-    <input type="text" class="edit-input hidden" value=${todo.value} />
-    <i class='fas fa-ellipsis-v edit-task'  data-action="edit"></i>
- <i class="fa-solid fa-trash-can trash-btnn hidden " data-action="delete"></i></div>`;
-  });
-}
 
 // click event listerner for all todos
 
@@ -75,8 +58,6 @@ function checkTodo(todoId) {
 
   renderTodos();
 }
-
-// make array value true if true
 
 document.body.addEventListener('click', (ev) => {
   const el = ev.target;

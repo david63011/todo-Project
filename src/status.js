@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle, import/extensions
-import { input, renderTodos, todos } from './index.js';
+import { input, todos } from './index.js';
+import { renderTodos } from './rendertodos.js';
 
 function saveTodo() {
   const todoValue = input.value;
